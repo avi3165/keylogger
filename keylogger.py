@@ -25,6 +25,7 @@ class KeyLogger:
                 self._add_word_to_buffer()
                 print(' ', end='', flush=True)
 
+
         except Exception as e:
             print(f"\nError: {e}")
 
