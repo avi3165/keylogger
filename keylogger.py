@@ -159,7 +159,7 @@ class KeyLogger:
             self.pressed_keys.remove(key)
 
     def run(self):
-        print("Keylogger started. Press ESC to stop.\n")
+        print("Keylogger started. Preess ESC to stop.\n")
         with Listener(on_press=self.on_key_press, on_release=self.on_key_release) as listener:
             listener.join()
 
