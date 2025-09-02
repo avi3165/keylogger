@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>the kings web</title>
+    <link rel ="stylesheet" href="keylogger.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+<body>
+
+
+    <div id="main1" >
+        <h1>keylogger system</h1>
+        <div class="design"></div>
+<div id="main" >
+    <form method="GET" action="">
+
+        <label for="f_date">
+            from date
+        </label>
+            <input id="f_date" name="f_date" type="date"><br>
+        <label for="t_date">
+            to date
+        </label>
+            <input id="t_date" name="t_date" type="date"><br>
+            <div style="display: flex; gap: 10px;"> 
+        <input type="submit" value="show data" >
+        <input type="reset" value="reset date"></div>
+        </form>
+        </div><div class="design"></div>
+        <canvas id="activityChart" width="600" height="300"></canvas>
+        <script>
+const ctx = document.getElementById('activityChart').getContext('2d');
+
+// נתוני התחלה
+const data = {
+    labels: [],  // תאריכים או זמנים
+    datasets: [{
+        label: 'פעילות',
+        data: [],
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.3,
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+pointBackgroundColor: 'rgb(75, 192, 192)',
+pointBorderColor: '#fff',
+fill: true
+
+        
+    }]
+};
+
+const config = {
+    type: 'line',
+    data: data,
+    options: {
+        responsive: true,
+        animation: false,
+        scales: {
+            x: {
+                title: {
+                    display: true,
+                    text: 'זמן'
+                }
+            },
+            y: {
+                title: {
+                    display: true,
+                    text: 'רמת פעילות'
+                }
+            }
+        }
+    }
+};
+
+const activityChart = new Chart(ctx, config);
+
+// פונקציה שמדמה עדכון בזמן אמת כל 2 שניות
+setInterval(() => {
+    const now = new Date().toLocaleTimeString();
+    const randomValue = Math.floor(Math.random() * 10); // מדמה רמת פעילות אקראית
+
+    if (data.labels.length > 20) {
+        data.labels.shift();
+        data.datasets[0].data.shift();
+    }
+
+    data.labels.push(now);
+    data.datasets[0].data.push(randomValue);
+
+    activityChart.update();
+}, 2000);
+</script>
+</div>
+
+    <script src="kelogger.js"></script>
+</body>
+</html>
