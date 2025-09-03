@@ -5,12 +5,12 @@ import search
 app = Flask(__name__)
 CORS(app)
 
-computers = search.create_computers_list()
+computers = []
 
 
 @app.route('/')
 def index():
-    return redirect('/keylogger.html')
+    return redirect('/static/Frontend/keylogger.html')
 
 
 @app.route('/api/computers', methods=['GET'])

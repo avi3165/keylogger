@@ -1,11 +1,11 @@
-body{
+ body{
     background-image:url(A0C93726-749C-E48E-E9F8-CA695BC297C0.jpg);
      background-repeat: no-repeat;
             background-attachment:fixed;
             background-size:100% 100%;
 }
 
- h1 { 
+/* h1 { 
     display: block;
     color:rgb(255, 255, 255) ;
 text-align: center;
@@ -42,4 +42,38 @@ width: 100px;
     border-radius: 15px;
 }
 
-     
+      */
+
+
+
+
+h1{
+    text-align: center;
+    color: white;
+}
+
+label{
+    color: white;
+    font-size: larger;
+}
+#input{
+    text-align: center;
+}
+
+#computer{
+     appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 10px;
+  padding-right: 30px; /* מקום לחץ */
+  font-size: 16px;
+  border: 1px solid #ccc;
+  background: none;
+  background-color: white;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 16,0 8,10"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 12px;
+}
+#result {color:aliceblue;
+}
