@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="4e7d1948-d228-4e74-a5ef-fbd4563bd629" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/kelogger.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/keylogger.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/keylogger.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/keylogger.py" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_09_2025_16_15_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_03_09_2025_16_15__Changes_.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
