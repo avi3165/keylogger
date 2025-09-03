@@ -6,7 +6,3 @@ def encryption(text):
         a = chr(ord(v)^ k)
         t += a
     return t
-<<<<<<< HEAD
-=======
-
->>>>>>> main
