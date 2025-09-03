@@ -72,3 +72,5 @@ git clone
 
 
 [Active Window: 'הודעה חדשה']
+[System Info] Computer Name: DESKTOP-IIC6VQL
+[System Info] Computer Name: DESKTOP-IIC6VQL
