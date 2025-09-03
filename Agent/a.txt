@@ -1,0 +1,4 @@
+[System Info] computer Name: יהונתן
+
+
+[Active Window: 'PythonProject1 [C:/Users/yonat/PycharmProjects/PythonProject1] – keyiogger.py']
