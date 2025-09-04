@@ -56,16 +56,18 @@ label{
     color: white;
     font-size: larger;
 }
-#input{
+#form{
     text-align: center;
 }
+
+
 
 #computer{
      appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
   padding: 10px;
-  padding-right: 30px; /* מקום לחץ */
+  padding-right: 3px; /* מקום לחץ */
   font-size: 16px;
   border: 1px solid #ccc;
   background: none;

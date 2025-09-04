@@ -55,7 +55,7 @@ async function get_computer_data(event){
 
     } else {
         // טיפול בשגיאה – הודעה למשתמש
-        showError(RESULT.error || "אירעה שגיאה");
+        displayData("NO DATA");
     }
 
 };
