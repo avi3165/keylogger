@@ -54,8 +54,8 @@ async function get_computer_data(event){
         displayData(RESULT.data);
 
     } else {
-        // טיפול בשגיאה – הודעה למשתמש
-        displayData("NO DATA");
+        // טיפול בשגיאה – הודעה למשתמש'
+        displayData({"machine_name": "ERROR", "content": "NO DATA"});
     }
 
 };
