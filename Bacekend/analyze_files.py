@@ -4,20 +4,20 @@ import json
 
 BASE_DIR = "logs"
 
-def save_data_with_time(data):
-    now = datetime.now()
-    date_str = now.strftime("%Y-%m-%d")   # לדוגמה: 2025-09-03
-    hour_str = now.strftime("%H")         # לדוגמה: 14
+def save_data_with_time(computer_name,date,data):
+    # now = datetime.now()
+    # date_str = now.strftime("%Y-%m-%d")   # לדוגמה: 2025-09-03
+    # hour_str = now.strftime("%H")         # לדוגמה: 14
 
-    date_dir = os.path.join(BASE_DIR, date_str)
-    os.makedirs(date_dir, exist_ok=True)
+    # date_dir = os.path.join(BASE_DIR, date_str)
+    # os.makedirs(date_dir, exist_ok=True)
 
-    file_path = os.path.join(date_dir, f"{hour_str}.txt")
+    # file_path = os.path.join(date_dir, f"{hour_str}.txt")
 
-    with open(file_path, "a", encoding="utf-8") as f:
+    with open(f"Bacekend\\data\\{computer_name}\\{date}.txt", "a", encoding="utf-8") as f:
         f.write(data + "\n")
 
-    return file_path
+    return ""
 
 
 def read_text(folder_name,f_date,t_date,date_format = "%Y-%m-%d"):
