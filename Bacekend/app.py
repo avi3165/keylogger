@@ -8,11 +8,7 @@ import os
 app = Flask(__name__)
 CORS(app)
 
-computers = [
-    {'name':'hagay'},
-    {'name':'idan PRO'},
-    {'name':'haim'},
-]
+computers = []
 
 
 @app.route('/')
