@@ -27,4 +27,3 @@ def decryption(enc_text):
 def decrypt_multiple(enc_texts):
     parts = enc_texts.strip().split()
     return ' '.join(decryption(part) for part in parts)
-
