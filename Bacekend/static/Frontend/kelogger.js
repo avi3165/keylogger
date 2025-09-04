@@ -80,5 +80,6 @@ async function get_data(NEW_REQUEST){
     }
 }
 function displayData(result){
-    document.getElementById("result").textContent = result
+    data = result.json
+    document.getElementById("result").textContent = data["content"]
 }
