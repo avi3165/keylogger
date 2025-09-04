@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, redirect
 from flask_cors import CORS
-import search
+from analyze_files import save_data_with_time, read_text
 
 app = Flask(__name__)
 CORS(app)
@@ -27,6 +27,13 @@ def add_computer():
 
     computers.append(new_computer)
     return jsonify(new_computer), 201
+
+
+@app.route('/api/computers/<machine>', methods=['GET'])
+def get_data():
+    p = request.json
+    new_text = read_text(p["machine"],p["f_date"],p["t_date"])
+    return new_text
 
 
 if __name__ == '__main__':
