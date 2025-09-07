@@ -41,6 +41,19 @@ function setupEventListeners(){
 
 }
 
+function displayData(result) {
+    console.log("📦 displayData קיבלה את:", result);
+
+    const data = result.data;
+
+    if (!data || !data.content) {
+        console.warn("⚠ אין תוכן להצגה – data או data.content ריק/undefined");
+        return;
+    }
+
+    document.getElementById("result").textContent = data.content;
+}
+
 async function get_computer_data(event){
     event.preventDefault();
     const NEW_REQUEST = {f_date:document.getElementById("f_date").value,
@@ -49,18 +62,18 @@ async function get_computer_data(event){
 
     const RESULT = await get_data(NEW_REQUEST)
 
-    if (RESULT.success) {
-        console.log("✔ נתונים שהתקבלו:", RESULT.data);
-        displayData(RESULT.data);
-
-    } else {
-        // טיפול בשגיאה – הודעה למשתמש'
-        displayData({"machine_name": "ERROR", "content": "NO DATA"});
+    if (RESULT && RESULT.success) {
+    console.log("✔ נתונים שהתקבלו:", RESULT.data);
+    displayData(RESULT);
+    } else {        displayData({ data: { machine_name: "ERROR", content: "NO DATA" } });
     }
 
 };
 
+
+
 async function get_data(NEW_REQUEST){
+    console.log(`${API_URL}/computers/${NEW_REQUEST.machine}?f_date=${NEW_REQUEST.f_date}&t_date=${NEW_REQUEST.t_date}`)
     try{
         const response = await fetch(`${API_URL}/computers/${NEW_REQUEST.machine}?f_date=${NEW_REQUEST.f_date}&t_date=${NEW_REQUEST.t_date}`,{
             method:'GET',
@@ -78,8 +91,4 @@ async function get_data(NEW_REQUEST){
         console.error('error get computer data',error);
         return {success:false , error:'cant get data'}
     }
-}
-function displayData(result){
-    data = result.json
-    document.getElementById("result").textContent = data["content"]
 }

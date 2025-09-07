@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, redirect
 from flask_cors import CORS
-from analyze_files import save_data_with_time, read_text
+from analyze_files import save_data_with_time, read_text, get_machines
 from Encryption import encryption 
 from Encryption import decryption ,decrypt_multiple
 
@@ -20,7 +20,7 @@ def index():
 
 @app.route('/api/computers', methods=['GET'])
 def get_computers():
-    return jsonify(computers)
+    return get_machines()
 
 @app.route('/api/data', methods=['POST'])
 def write_data():
