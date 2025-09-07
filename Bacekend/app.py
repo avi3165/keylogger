@@ -1,14 +1,16 @@
 from flask import Flask, jsonify, request, redirect
 from flask_cors import CORS
 from analyze_files import save_data_with_time, read_text
-from Encryption import encryption
+from Encryption import encryption 
+from Encryption import decryption ,decrypt_multiple
+
 from datetime import datetime
 import os
 
 app = Flask(__name__)
 CORS(app)
 
-computers = [{"name": "nn"}]
+computers = [{"name":"jj"}]
 
 
 @app.route('/')
@@ -26,7 +28,7 @@ def write_data():
     print(new_data)
     dt = datetime.strptime(new_data["timestamp"],"%Y-%m-%d %H:%M:%S")
     date_only = dt.date()
-    data = encryption(new_data["log"])
+    data = (decrypt_multiple(new_data["log"]))
     print(new_data["log"])
     print(data)
     save_data_with_time(new_data["computer_name"],date_only,data)
@@ -48,8 +50,7 @@ def add_computer():
 
 @app.route('/api/computers/<machine>', methods=['GET'])
 def get_data(machine):
-    p = request.json
-    print(p)
+    p = request.args
     new_text = read_text(machine,p["f_date"],p["t_date"])
     return new_text
 
