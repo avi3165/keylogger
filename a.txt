@@ -220,3 +220,152 @@
 ?k{ 9fk v  [2025-09-04 14:12:49] [Window: keylogger.py - keylogger - Visual Studio Code]
 ?k{ ;mba^b u 5 jfjC=c jfjC= 0chmN jfjC=  [2025-09-04 14:13:17] [Window: keylogger.py - keylogger - Visual Studio Code]
 ?k{ +vnxBe  [2025-09-04 14:13:28] [Window: keylogger.py - keylogger - Visual Studio Code]
+[System Info] Computer Name: DESKTOP-IIC6VQL
+
+
+[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
+NGllaEF6Mw== Mmln NGk= MA== NGk= Mmlj M25l NGhk NGll Mmlj  [2025-09-04 15:35:00] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
+Mg== Y2g= NGll NGhk Mmlj G3Z9YBx3 G3Z9YBx3 G3Z9YBx3 M2prbl9yOmRlaER9Pg== Mmk=  [2025-09-04 15:35:47] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
+M2hn M2g= M2o= MA== M2o= Mmo= Mw== MA== MA== MA==  [2025-09-04 15:35:51] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
+MA== MA== MA== MA== MA== MA== MA== MA== MA== MA==  [2025-09-04 15:35:54] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
+MA== MA== MA== MA== MA== MA== MA== MA== MA== MA==  [2025-09-04 15:35:56] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
+MA== MA== MA== MA== MA== IQ== LQ== LQ== LQ== M3dn  [2025-09-04 15:36:00] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
+M2g= M2hn Mmln M2hn M2g= M2hn Mmk= M2hn M2g= M2hnZlU=  [2025-09-04 15:36:09] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
+Mmo= MGho Mmpo Mmpo Mmpo Mmpo MGU= Mmpo Mmpo Mmpo  [2025-09-04 15:36:12] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
+IWd8 Nm0= IW18 Nm0= Ng== Ng== Ng== Ng== Ng== Ng==  [2025-09-04 15:37:04] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
+Ng== Ng== Ng== Ng== Ng== Ng== Ng== Ng== G3Z9YBx3 G3Z9YBx3  [2025-09-04 15:37:26] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
+
+
+[Active Window: 'analyze_files.py - keylogger - Visual Studio Code']
+[System Info] Computer Name: DESKTOP-IIC6VQL
+
+
+[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
+C2pmakM9Yw==  [2025-09-04 15:47:48] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
+
+
+[Active Window: 'app.py - keylogger - Visual Studio Code']
+
+
+[Active Window: '‪Untracked files in Git - Google Chrome‬']
+C2pmakM9Aw== C2pmakM9fw== C2pmakM9Yw== C2pmakM9fw== C2pmakM9BQ== G3Z9YBx1 G3Z9YBxg G3Z9YBxg G3Z9YBx1 G3Z9YBxg  [2025-09-04 15:50:22] [Window: ‪Untracked files in Git - Google Chrome‬]
+NnQ= MGR6Z0E= M3RneRs= C2pmakM9dw==  [2025-09-04 15:50:29] [Window: ‪Untracked files in Git - Google Chrome‬]
+
+
+[Active Window: 'app.py - keylogger - Visual Studio Code']
+G3Z9YBwxBHo/PxA= G3Z9YBwxBHo+OhA= G3Z9YBwxBHo/PxA=  [2025-09-04 15:53:02] [Window: app.py - keylogger - Visual Studio Code]
+G3Z9YBwxBHo+OhA= G3Z9YBwxBHo/PxA= G3Z9YBwxBHo+OhA= Nm17  [2025-09-04 15:53:23] [Window: app.py - keylogger - Visual Studio Code]
+
+
+[Active Window: '‪Untracked files in Git - Google Chrome‬']
+
+
+[Active Window: '‫כרטיסייה פרטית חדשה - Google Chrome‬']
+
+
+[Active Window: '‪Untracked files in Git - Google Chrome‬']
+LGpj C2pmakM9f00o C2pmakM9f1Eo  [2025-09-04 15:53:55] [Window: ‪Untracked files in Git - Google Chrome‬]
+
+
+[Active Window: 'analyze_files.py - keylogger - Visual Studio Code']
+
+
+[Active Window: '‪Untracked files in Git - Google Chrome‬']
+G3Z9YBwxBHo/PxA= G3Z9YBwxBHo+OhA=  [2025-09-04 15:55:00] [Window: ‪Untracked files in Git - Google Chrome‬]
+C2pmakM9f3Qo C2pmakM9f3Qo C2pmakM9f2wo C2pmakM9f2oo C2pmakM9f2co C2pmakM9f3co C2pmakM9f20o C2pmakM9f2Mo C2pmakM9f2ko C2pmakM9f3Qo  [2025-09-04 15:55:07] [Window: ‪Untracked files in Git - Google Chrome‬]
+C2pmakM9f2oo C2pmakM9f3co C2pmakM9fy4o  [2025-09-04 15:55:10] [Window: ‪Untracked files in Git - Google Chrome‬]
+
+
+[Active Window: 'analyze_files.py - keylogger - Visual Studio Code']
+C2pmakM9G3Z9YBwxBHo/PxA= C2pmakM9G3Z9YBwxBHo+OhA= C2pmakM9G3Z9YBwxBHo/PxA= C2pmakM9G3Z9YBwxBHo+OhA=  [2025-09-04 15:56:30] [Window: analyze_files.py - keylogger - Visual Studio Code]
+C2pmakM9f2Uo C2pmakM9f2so C2pmakM9Pw== C2pmakM9MQ== C2pmakM9LA== C2pmakM9OQ== C2pmakM9PA== C2pmakM9PA== C2pmakM9Og== C2pmakM9Kw==  [2025-09-04 15:57:52] [Window: analyze_files.py - keylogger - Visual Studio Code]
+C2pmakM9OQ== C2pmakM9OQ==  [2025-09-04 15:58:05] [Window: analyze_files.py - keylogger - Visual Studio Code]
+C2pmakM9Pw== C2pmakM9MQ== C2pmakM9LA== C2pmakM9Ow== C2pmakM9Nw== C2pmakM9NQ== C2pmakM9NQ== C2pmakM9MQ== C2pmakM9LA== C2pmakM9dQ==  [2025-09-04 15:58:12] [Window: analyze_files.py - keylogger - Visual Studio Code]
+C2pmakM9fw== C2pmakM9fw== LXJrbUNz OWxuYE5sPQ== PmtjaQ==  [2025-09-04 15:58:28] [Window: analyze_files.py - keylogger - Visual Studio Code]
+P2t7 KHd8ZA==  [2025-09-04 15:58:36] [Window: analyze_files.py - keylogger - Visual Studio Code]
+P2t7 O2pqb1x5LXY= NWNmYg==  [2025-09-04 15:58:49] [Window: analyze_files.py - keylogger - Visual Studio Code]
+P2t7 KHdjYA==  [2025-09-04 15:58:56] [Window: analyze_files.py - keylogger - Visual Studio Code]
+P2t7 NWd9a1I= OXRmbw==  [2025-09-04 15:59:16] [Window: analyze_files.py - keylogger - Visual Studio Code]
+P2t7 KHd8ZA==  [2025-09-04 15:59:24] [Window: analyze_files.py - keylogger - Visual Studio Code]
+P2t7 OnBuYlR+  [2025-09-04 16:03:43] [Window: analyze_files.py - keylogger - Visual Studio Code]
+OXRmbw==  [2025-09-04 16:03:55] [Window: analyze_files.py - keylogger - Visual Studio Code]
+K3ZueEJl  [2025-09-04 16:04:25] [Window: analyze_files.py - keylogger - Visual Studio Code]
+P2t7 OWZr OmM=  [2025-09-04 16:04:48] [Window: analyze_files.py - keylogger - Visual Studio Code]
+P2s= LA== O21iYV5i dW8= C2pmakM9fw== C2pmakM9fw== LXJrbUNz C2pmakM9PQ== NmF9dUdiMW1h MW9/Y0Vi  [2025-09-04 16:05:25] [Window: analyze_files.py - keylogger - Visual Studio Code]
+P2t7 KHd8ZA==  [2025-09-04 16:05:30] [Window: analyze_files.py - keylogger - Visual Studio Code]
+NWNmYg==  [2025-09-04 16:05:39] [Window: analyze_files.py - keylogger - Visual Studio Code]
+P2t7 KHdjYA==  [2025-09-04 16:05:50] [Window: analyze_files.py - keylogger - Visual Studio Code]
+
+
+[Active Window: 'מסך הנעילה המשמש כברירת מחדל ב- Windows']
+
+
+[Active Window: '‪Untracked files in Git - Google Chrome‬']
+C2pmakM9fyso C2pmakM9fyoo  [2025-09-04 20:04:53] [Window: ‪Untracked files in Git - Google Chrome‬]
+G3Z9YBwxBHo/PxA= G3Z9YBwxBHo+OhA=  [2025-09-04 20:05:59] [Window: ‪Untracked files in Git - Google Chrome‬]
+G3Z9YBwxBHo+OhA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA=  [2025-09-04 20:08:01] [Window: ‪Untracked files in Git - Google Chrome‬]
+G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA=  [2025-09-04 20:08:04] [Window: ‪Untracked files in Git - Google Chrome‬]
+G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA=  [2025-09-04 20:08:08] [Window: ‪Untracked files in Git - Google Chrome‬]
+G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA= G3Z9YBwxBHo+bRA=  [2025-09-04 20:08:54] [Window: ‪Untracked files in Git - Google Chrome‬]
+
+
+[Active Window: 'מסך הנעילה המשמש כברירת מחדל ב- Windows']
+
+
+[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
+
+
+[Active Window: 'מסך הנעילה המשמש כברירת מחדל ב- Windows']
+
+
+[Active Window: '‪the kings web - Google Chrome‬']
+
+
+[Active Window: 'מסך הנעילה המשמש כברירת מחדל ב- Windows']
+
+
+[Active Window: '‪(46) WhatsApp - Google Chrome‬']
+C2pmakM9fyAo C2pmakM9fz0o  [2025-09-07 09:36:25] [Window: ‪(46) WhatsApp - Google Chrome‬]
+G3Z9YBwxBHo/OhA=  [2025-09-07 09:57:18] [Window: ‪(46) WhatsApp - Google Chrome‬]
+
+
+[Active Window: '']
+
+
+[Active Window: 'מסך הנעילה המשמש כברירת מחדל ב- Windows']
+
+
+[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
+
+
+[Active Window: 'מסך הנעילה המשמש כברירת מחדל ב- Windows']
+
+
+[Active Window: '‪Chat - Google Chrome‬']
+C2pmakM9fyAo  [2025-09-07 14:53:04] [Window: ‪Chat - Google Chrome‬]
+
+
+[Active Window: '']
+
+
+[Active Window: 'מסך הנעילה המשמש כברירת מחדל ב- Windows']
+
+
+[Active Window: 'הודעה חדשה']
+
+
+[Active Window: '‪(45) WhatsApp - Google Chrome‬']
+
+
+[Active Window: 'keylogger.py - keylogger - Visual Studio Code']
+[System Info] Computer Name: DESKTOP-IIC6VQL
+
+
+[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
+
+
+[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
+G3Z9YBwxBHo/PxA= P2ppZFA= Ng== P2RiZFA= MmZlell8O2k= Mmxleg== PGl5Yg== Mmk= MmxsaA== Mg==  [2025-09-07 15:29:18] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
+P2ppZFA= Ng== P2RiZFA= MmZlell8O2k= Mmxleg== PGl5Yg== Mmk= MmxsaA== Mg== PGhkdA==  [2025-09-07 15:29:20] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
+Mno= Ng== M2xr Mg== M2w= MA== MGw= Nmlr PGk= PGpk  [2025-09-07 15:29:23] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
+Ng== M2xr Mg== M2w= MA== MGw= Nmlr PGk= PGpk O2k=  [2025-09-07 15:29:25] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
