@@ -1,4 +1,3 @@
-# logger.py
 import requests
 import os
 

