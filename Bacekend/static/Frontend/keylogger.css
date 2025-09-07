@@ -5,48 +5,6 @@
             background-size:100% 100%;
 }
 
-/* h1 { 
-    display: block;
-    color:rgb(255, 255, 255) ;
-text-align: center;
-font-style: initial;
-}
-
- label{color: white;}
-
-input{
-    border-radius: 10px;
-    background-color: rgb(66, 66, 135);
-    color: rgb(255, 255, 255);
-    font-size: large;
-    display: block; margin: 0 auto;
-}
-
- #buttons{
-width: 100px;
-      padding: 43px;
-      font-size: 16px;
-      cursor: pointer;
-      border:none;
-      border-radius: 5px;
-      background-color: #007bff;
-      color: white;
-        transition: background-color 0.3s;} 
-        
- #main{display: flex;
-    justify-content: space-around; 
-        align-items: flex-start; 
-        width:fit-content;
-        height:auto;
-    background-color:rgba(255,255,255, 0.3);
-    border-radius: 15px;
-}
-
-      */
-
-
-
-
 h1{
     text-align: center;
     color: white;
@@ -58,24 +16,17 @@ label{
 }
 #form{
     text-align: center;
+    
 }
 
 
 
-#computer{
-     appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  padding: 10px;
-  padding-right: 3px; /* מקום לחץ */
+
+#result {
+  display: block !important;
+  color: white;
   font-size: 16px;
-  border: 1px solid #ccc;
-  background: none;
-  background-color: white;
-  background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="16" width="16" xmlns="http://www.w3.org/2000/svg"><polygon points="0,0 16,0 8,10"/></svg>');
-  background-repeat: no-repeat;
-  background-position: right 10px center;
-  background-size: 12px;
-}
-#result {color:aliceblue;
+  background:rgba(0,0,0,0.5);
+  padding: 10px;
+  border-radius: 10px;
 }

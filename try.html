@@ -115,6 +115,8 @@ setInterval(() => {
   </style>
 </head>
 <body>
+  <h1  style="color: green; text-align: center;"><span id="binaryTitle"></span>אבי ה</span></h1>
+>אבי האפס</h1>
   <canvas id="matrixCanvas"></canvas>
 
   <script>
@@ -151,6 +153,14 @@ setInterval(() => {
     }
 
     setInterval(draw, 53);
+    let currentValue = 1;
+const titleElement = document.getElementById("binaryTitle");
+
+setInterval(() => {
+  currentValue = currentValue === 0 ? 1 : 0;
+  titleElement.textContent = currentValue;
+}, 1000);
+
     
     window.addEventListener('resize', () => {
       canvas.width = window.innerWidth;

