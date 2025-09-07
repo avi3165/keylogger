@@ -7,18 +7,32 @@
 
 h1{
     text-align: center;
-    color: white;
+    color: rgb(177, 164, 164);
 }
 
 label{
     color: white;
     font-size: larger;
 }
-#form{
-    text-align: center;
-    
+#get_form {
+  display: flex;
+  align-items: center;     /* מיישר אנכית את השדות */
+  gap: 20px;               /* רווח בין האלמנטים */
+  flex-wrap: wrap;         /* מאפשר שבירה לשורה שנייה במסכים קטנים */
 }
 
+.form-row {
+  display: flex;
+  flex-direction: column;  /* כדי לשמור על label מעל input */
+   width: 200px;
+}
+
+#button{
+    height: 50px;
+    width: 150px;
+   display: block;
+  margin: 20px auto 0 auto; 
+}
 
 
 

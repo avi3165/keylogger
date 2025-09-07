@@ -220,3 +220,12 @@
 ?k{ 9fk v  [2025-09-04 14:12:49] [Window: keylogger.py - keylogger - Visual Studio Code]
 ?k{ ;mba^b u 5 jfjC=c jfjC= 0chmN jfjC=  [2025-09-04 14:13:17] [Window: keylogger.py - keylogger - Visual Studio Code]
 ?k{ +vnxBe  [2025-09-04 14:13:28] [Window: keylogger.py - keylogger - Visual Studio Code]
+[System Info] Computer Name: DESKTOP-9GJDES2
+
+
+[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
+C2pmakM9f0Mo G3Z9YBwxBHo/PRA= MGVrZlA= P2pn P2po P2o= P2o= Mmo= P2hn P2hn  [2025-09-07 15:24:06] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
+
+
+[Active Window: 'keylogger.py - keylogger - Visual Studio Code']
+MGU= Mmpo MGg= MGU= P2o= Mmpo P2o= P2g= Mg==  [2025-09-07 15:24:35] [Window: keylogger.py - keylogger - Visual Studio Code]
