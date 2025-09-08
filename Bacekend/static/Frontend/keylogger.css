@@ -1,39 +1,50 @@
- body{
-    background-image:url(A0C93726-749C-E48E-E9F8-CA695BC297C0.jpg);
-     background-repeat: no-repeat;
+ /* body{
+     background-image:url(A0C93726-749C-E48E-E9F8-CA695BC297C0.jpg); 
+    background-repeat: no-repeat;
             background-attachment:fixed;
             background-size:100% 100%;
-}
+} */
 
-h1{
+/* h1{
     text-align: center;
     color: rgb(177, 164, 164);
 }
 
 label{
-    color: white;
+
+    color: rgba(255, 255, 255,0.9);
     font-size: larger;
+    text-align: center;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
-#get_form {
-  display: flex;
-  align-items: center;     /* מיישר אנכית את השדות */
-  gap: 20px;               /* רווח בין האלמנטים */
-  flex-wrap: wrap;         /* מאפשר שבירה לשורה שנייה במסכים קטנים */
+#form{
+  display: flex;           
+  flex-direction: column;
+  align-items: center;     
+  gap: 40px; 
 }
 
 .form-row {
   display: flex;
-  flex-direction: column;  /* כדי לשמור על label מעל input */
+  flex-direction: column;  
    width: 200px;
 }
 
+
 #button{
+  border-radius: 100px;
+  background-color: black;
+  color: white;
     height: 50px;
     width: 150px;
    display: block;
-  margin: 20px auto 0 auto; 
+  margin: 20px auto 0 auto;
+  
 }
-
+#live:hover{
+  background-color: black;
+  color: white;
+}
 
 
 #result {
@@ -44,3 +55,17 @@ label{
   padding: 10px;
   border-radius: 10px;
 }
+#blinking{
+    margin-left: 22px;
+  width: 8px;
+  height: 8px;
+  background-color: rgb(195, 78, 43);
+  border-radius: 100%;
+  animation: blink 1s infinite;}
+  @keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+} 
+ */
+

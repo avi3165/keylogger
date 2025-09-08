@@ -229,3 +229,14 @@ C2pmakM9f0Mo G3Z9YBwxBHo/PRA= MGVrZlA= P2pn P2po P2o= P2o= Mmo= P2hn P2hn  [2025
 
 [Active Window: 'keylogger.py - keylogger - Visual Studio Code']
 MGU= Mmpo MGg= MGU= P2o= Mmpo P2o= P2g= Mg==  [2025-09-07 15:24:35] [Window: keylogger.py - keylogger - Visual Studio Code]
+[System Info] Computer Name: DESKTOP-9GJDES2
+
+
+[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
+
+
+[Active Window: 'keylogger.py - keylogger - Visual Studio Code']
+[System Info] Computer Name: DESKTOP-9GJDES2
+
+
+[Active Window: 'keylogger.py - keylogger - Visual Studio Code']
