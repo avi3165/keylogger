@@ -1,4 +1,3 @@
-# logger.py
 import requests
 import os
 # קלאס שמקבל שם קובץ וכתובת שרת #
@@ -17,7 +16,7 @@ class Logger:
     def send_to_server(self, data: dict):
         try:
             response = requests.post(self.server_url, json=data)
-            if response.status_code != 200:
+            if response.status_code != 201:
                 print(f"[Warning] Server responded with status code {response.status_code}")
         except Exception as e:
             print(f"[Error] Sending data to server failed: {e}")
