@@ -1,6 +1,6 @@
 __pycache__/
 .idea/
 *.pyc
-Bacekend/data/
-data\
+Bacekend/data
 a.txt
+.vscode
