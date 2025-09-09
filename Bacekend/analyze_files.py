@@ -20,14 +20,17 @@ def read_text(folder_name,f_date,t_date,date_format):
     all_texts = []
     DATA_PATH = "Bacekend\\data"
     if folder_name in os.listdir(DATA_PATH):
+        print(DATA_PATH)
         for file_name in os.listdir(f"{DATA_PATH}\\{folder_name}"):
+            print(file_name)
             if file_name.endswith(".txt"):
                 new_name = file_name[:-4]
                 try:
                     file_date = datetime.strptime(new_name,date_format)
+                    print(file_date)
                     if f_date <= file_date<= t_date:
                         file_path = os.path.join(DATA_PATH,folder_name,file_name)
-                        with open(file_path,"r") as f:
+                        with open(file_path,"r", encoding="utf-8") as f:
                             text = f.read()
                             all_texts.append(text)
                 except ValueError:
@@ -38,6 +41,7 @@ def read_text(folder_name,f_date,t_date,date_format):
         "content": "NO DATA"
     }
         return result
+    print(all_texts)
     result = {
         "machine_name": folder_name,
         "content": all_texts
@@ -45,7 +49,7 @@ def read_text(folder_name,f_date,t_date,date_format):
     return result
 
 def get_machines():
-    a = os.listdir("Bacekend\data")
+    a = os.listdir("Bacekend\\data")
     machines = []
     for i in a:
         machine = {"name":i}

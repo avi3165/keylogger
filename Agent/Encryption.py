@@ -1,6 +1,6 @@
 import base64
 
-
+# הצפנה במודל אקסור  עם מגוון מפתחות ושימוש בבייס 64  כדי לקבל פלט קריא  #
 def encryption(text):
     l = [88, 2, 15, 12, 55, 22]
     encrypted = bytearray()
@@ -12,7 +12,7 @@ def encryption(text):
 
     return base64.b64encode(encrypted).decode('utf-8')
 
-
+# תרגום מהצפנה בהתבסס על אותם מפתחות #
 def decryption(enc_text):
     l = [88, 2, 15, 12, 55, 22]
     data = base64.b64decode(enc_text)
@@ -23,7 +23,7 @@ def decryption(enc_text):
         decrypted.append(b ^ k)
 
     return decrypted.decode('utf-8')
-
+# טיפול בליסט או סטרינג שמכיל כמה מילים #
 def decrypt_multiple(enc_texts):
     parts = enc_texts.strip().split()
     return ' '.join(decryption(part) for part in parts)

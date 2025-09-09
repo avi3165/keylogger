@@ -1,0 +1,56 @@
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The King's Cyber Web</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+ 
+  <div id="login-screen" class="container">
+    <h1 style="text-align: center;"><big>Keylogger System</big></h1>
+    <form id="get_form" >
+      <label for="machine" style="text-align: center;">Choose a computer</label>
+      <select id="machine" name="machine" required>
+        
+      </select>
+
+      <label for="f_date">From Date</label>
+      <input id="f_date" name="f_date" type="date" required />
+
+      <label for="t_date">To Date</label>
+      <input id="t_date" name="t_date" type="date" required />
+
+      <button type="submit" class="btn">Show Data</button>
+    </form>
+  </div>
+
+
+  <div id="dashboard" class="container hidden">
+    <h1>Dashboard</h1>
+
+    <div id="dashboard-content">
+      <div id="live-status" class="card">
+        <h2>Live Status</h2>
+        <p id="live-text">Loading live data...</p>
+      </div>
+
+      <div id="activity-graph" class="card">
+        <h2>Last 24h Activity</h2>
+        <canvas id="activityChart"></canvas>
+      </div>
+
+      <div id="typed-text" class="card">
+        <h2>Typed Text</h2>
+        <div id="typed-content">Loading typed text...</div>
+      </div>
+    </div>
+  </div>
+
+ 
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script src="kelogger.js"></script>
+</body>
+</html>

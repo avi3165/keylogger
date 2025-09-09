@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 l"fQ2A26Ctrl+a"zJ8x,2fiHEhfkjkjhkjx2fiSx1gkkjh,0e
 kj/Ak8z,,`%bl
 .o@6mvmvmnb":`Z6mnb,z5":`,7c
@@ -47,3 +48,6 @@ Shift+;
 Shift+[ Shift+' Shift+; Shift+' Shift+] Ctrl+c Ctrl+v Ctrl+v Ctrl+c Ctrl+v
 nv hfukv kvhu, Shift+/
 Ctrl+'\x03' Ctrl+'\x16' Ctrl+'\x03'
+=======
+
+>>>>>>> main
