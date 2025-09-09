@@ -2,6 +2,7 @@ import requests
 import os
 # קלאס שמקבל שם קובץ וכתובת שרת #
 class Logger:
+    """הקלאס מקבל שם קובץ וכתובת אתר ודואג לשליחה של המידע"""
     def __init__(self, log_file: str, server_url: str):
         self.log_file = log_file
         self.server_url = server_url
