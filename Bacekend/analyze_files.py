@@ -27,7 +27,7 @@ def read_text(folder_name,f_date,t_date,date_format):
                     file_date = datetime.strptime(new_name,date_format)
                     if f_date <= file_date<= t_date:
                         file_path = os.path.join(DATA_PATH,folder_name,file_name)
-                        with open(file_path,"r") as f:
+                        with open(file_path,"r", encoding="utf-8") as f:
                             text = f.read()
                             all_texts.append(text)
                 except ValueError:
@@ -45,7 +45,7 @@ def read_text(folder_name,f_date,t_date,date_format):
     return result
 
 def get_machines():
-    a = os.listdir("Bacekend\data")
+    a = os.listdir("Bacekend\\data")
     machines = []
     for i in a:
         machine = {"name":i}
