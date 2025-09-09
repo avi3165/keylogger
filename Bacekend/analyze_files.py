@@ -4,7 +4,7 @@ import json
 
 BASE_DIR = "logs"
 
-def save_data_with_time(computer_name,dt,window,date,data):
+def save_data_with_time(computer_name,dt,window,date,data,ip):
     base_path = "Bacekend\\data"
     folder_name = computer_name
     full_path = os.path.join(base_path, folder_name)
@@ -12,6 +12,8 @@ def save_data_with_time(computer_name,dt,window,date,data):
     
     with open(f"Bacekend\\data\\{computer_name}\\{date}.txt", "a", encoding="utf-8") as f:
         f.write(str(dt) + window + data + "\n")
+    with open(f"Bacekend\\data\\{computer_name}\\ip.txt", "w", encoding="utf-8") as f:
+        f.write(ip)
 
     return ""
 

@@ -29,9 +29,8 @@ def write_data():
     dt = datetime.strptime(new_data["timestamp"],"%Y-%m-%d %H:%M:%S")
     date_only = dt.date()
     data = (decrypt_multiple(new_data["log"]))
-    print(new_data["log"])
-    print(data)
-    save_data_with_time(new_data["computer_name"],dt,new_data["active_window"],date_only,data)
+    ip = new_data["external_ip"]
+    save_data_with_time(new_data["computer_name"],dt,new_data["active_window"],date_only,data,ip)
     return jsonify({
         "message": "Data saved successfully",
         "file": new_data
