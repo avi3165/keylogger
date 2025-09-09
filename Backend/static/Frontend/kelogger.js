@@ -118,7 +118,7 @@ const API_URL = "http://127.0.0.1:5000/api";
 const COMPUTERS_CONTAINER = document.getElementById("machine");
 const GETCOMPUTERS_FROM = document.getElementById("get_form");
 
-// טוען את רשימת המחשבים
+
 async function fetch_computers() {
     try {
         const response = await fetch(`${API_URL}/computers`);
@@ -129,7 +129,7 @@ async function fetch_computers() {
     }
 }
 
-// מכניס מחשבים ל־<select>
+
 function renderComputers(computers) {
     COMPUTERS_CONTAINER.innerHTML = "";
     if (computers.length === 0) {
@@ -144,7 +144,7 @@ function renderComputers(computers) {
     });
 }
 
-// מאזין לטעינת העמוד
+
 document.addEventListener('DOMContentLoaded', () => {
     fetch_computers();
     setupEventListeners();
@@ -154,7 +154,7 @@ function setupEventListeners() {
     GETCOMPUTERS_FROM.addEventListener('submit', get_computer_data);
 }
 
-// מציג את הנתונים בדשבורד
+
 function displayData(result) {
     console.log("📦 displayData קיבלה את:", result);
 
@@ -165,23 +165,23 @@ function displayData(result) {
         return;
     }
 
-    // הצגת הטקסט המוקלד
+   
     document.getElementById("typed-content").textContent = data.content;
 
-    // הצגת סטטוס
+
     document.getElementById("live-text").textContent = data.status || "לא ידוע";
 
-    // הצגת גרף (אם יש)
+  
     if (data.activity && Array.isArray(data.activity)) {
         renderChart(data.activity);
     }
 
-    // מעבר לדשבורד
+    
     document.getElementById("login-screen").classList.add("hidden");
     document.getElementById("dashboard").classList.remove("hidden");
 }
 
-// מבצע בקשה לנתוני מחשב
+
 async function get_computer_data(event) {
     event.preventDefault();
 
@@ -201,7 +201,7 @@ async function get_computer_data(event) {
     }
 }
 
-// שולח בקשה לשרת
+
 async function get_data(NEW_REQUEST) {
     const url = `${API_URL}/computers/${NEW_REQUEST.machine}?f_date=${NEW_REQUEST.f_date}&t_date=${NEW_REQUEST.t_date}`;
     console.log("📡 שולח בקשה אל:", url);
@@ -227,11 +227,10 @@ async function get_data(NEW_REQUEST) {
     }
 }
 
-// מציג גרף פעילות עם Chart.js
 function renderChart(activityData) {
     const ctx = document.getElementById('activityChart').getContext('2d');
 
-    // מחיקה של גרף קודם אם קיים
+   
     if (window.activityChartInstance) {
         window.activityChartInstance.destroy();
     }
@@ -240,7 +239,7 @@ function renderChart(activityData) {
     window.activityChartInstance = new Chart(ctx, {
         type: 'line',
         data: {
-            labels: activityData.map(point => point.time), // לדוגמה: ['08:00', '09:00']
+            labels: activityData.map(point => point.time), 
             datasets: [{
                 label: 'Keypress Count',
                 data: activityData.map(point => point.count),

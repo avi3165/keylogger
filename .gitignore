@@ -1,4 +1,7 @@
 __pycache__/
 .idea/
 *.pyc
-Bacekend/data/
+Bacekend/data
+a.txt
+.vscode
+Bacekend/search.py

@@ -1,280 +1,0 @@
-<<<<<<< HEAD
-[System Info] Computer Name: DESKTOP-IIC6VQL
-
-
-[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
-:.bnx:.mo ",w T{ ",bz vxy 5` 0 2` 2 2` 3  [2025-09-04 12:55:23] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-
-
-[Active Window: 'app.py - keylogger - Visual Studio Code']
-:hdfU 3h 2im 3hm 3hm 3 2` 2i  [2025-09-04 12:56:12] [Window: app.py - keylogger - Visual Studio Code]
-[System Info] Computer Name: DESKTOP-IIC6VQL
-
-
-[Active Window: 'app.py - keylogger - Visual Studio Code']
-jfjC= v}`l v}`l v}`l v}`l jfjC=s jfjC=s jfjC=s jfjC=s  [2025-09-04 13:01:01] [Window: app.py - keylogger - Visual Studio Code]
-[System Info] Computer Name: DESKTOP-IIC6VQL
-
-
-[Active Window: 'app.py - keylogger - Visual Studio Code']
-[System Info] Computer Name: DESKTOP-IIC6VQL
-
-
-[Active Window: 'app.py - keylogger - Visual Studio Code']
-[System Info] Computer Name: DESKTOP-IIC6VQL
-
-
-[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
-4kg`^z> 4l|hQ 4f|gQ +dcgYe<d +gi <d|h +fi +fi +fh <d  [2025-09-04 13:02:47] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-
-
-[Active Window: 'keylogger.py - keylogger - Visual Studio Code']
-<dg <d <dh <dh <dh v}`9  [2025-09-04 13:06:19] [Window: keylogger.py - keylogger - Visual Studio Code]
-(  [2025-09-04 13:06:22] [Window: keylogger.py - keylogger - Visual Studio Code]
-jfjC=a 6  [2025-09-04 13:06:28] [Window: keylogger.py - keylogger - Visual Studio Code]
-
-
-[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
-v}`w 4hgg] 4jc 0ndd 4ig 4ig 4j 4hg 2`g 3wh  [2025-09-04 13:06:47] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-1{h 1wg 7w 0mz 7w 0m 0m -j 7kg 7kg  [2025-09-04 13:06:49] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-
-
-[Active Window: 'app.py - keylogger - Visual Studio Code']
-7kg 7 0mf 0m 1j  [2025-09-04 13:07:29] [Window: app.py - keylogger - Visual Studio Code]
-*g  [2025-09-04 13:07:31] [Window: app.py - keylogger - Visual Studio Code]
-
-
-[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
-v}`w >fhhQ~>hi >fg <dgh >j <j <j <j <d ;dm  [2025-09-04 13:07:45] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-
-
-[Active Window: 'app.py - keylogger - Visual Studio Code']
-
-
-[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
-<dg <dg <dh <dh <ph <e <dh <dh v}`u v}`w  [2025-09-04 13:08:09] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-4hgd 4j 3wg 3wg 3jz 3wg -j 3h 3 2j  [2025-09-04 13:08:12] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-
-
-[Active Window: 'app.py - keylogger - Visual Studio Code']
-
-
-[Active Window: '‪Untracked files in Git - Google Chrome‬']
-3h 3 0i 2j 3j 3h 0i 0 v}`u v}``  [2025-09-04 13:09:45] [Window: ‪Untracked files in Git - Google Chrome‬]
-,`g 6glg  [2025-09-04 13:10:02] [Window: ‪Untracked files in Git - Google Chrome‬]
-
-
-[Active Window: 'app.py - keylogger - Visual Studio Code']
-
-
-[Active Window: '‪Untracked files in Git - Google Chrome‬']
-
-
-[Active Window: 'app.py - keylogger - Visual Studio Code']
-
-
-[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
-
-
-[Active Window: 'keylogger.py - keylogger - Visual Studio Code']
-v}`1z?? v}`1z>: v}`1z?= v}`1z?? v}`1z?? v}`1z?=  [2025-09-04 13:12:35] [Window: keylogger.py - keylogger - Visual Studio Code]
-[System Info] Computer Name: DESKTOP-IIC6VQL
-
-
-[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
-v}`1z?= 2jeg] 3 3h 3hg 3h 0ie 0i 2jd 2j  [2025-09-04 13:16:05] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-3hg 3h 0ie 3 2j 3hg 2j 3h 0ie 0i  [2025-09-04 13:16:07] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-
-
-[Active Window: 'app.py - keylogger - Visual Studio Code']
-
-
-[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
-0i 0i 2j 3hg 3hg 2ig v}`9 v}`w 2jddU| 0`  [2025-09-04 13:16:51] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-3 3hg 3h 0h 3j 3j 3j 3j 3 0  [2025-09-04 13:16:54] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-3 0 3 0 3 0 3j 3 0i 0i  [2025-09-04 13:16:57] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-
-
-[Active Window: 'app.py - keylogger - Visual Studio Code']
-
-
-[Active Window: '‪Untracked files in Git - Google Chrome‬']
-0 3j 3j 3 0i 5 :omb 5`az v}`u v}`w  [2025-09-04 13:17:54] [Window: ‪Untracked files in Git - Google Chrome‬]
-v}``  [2025-09-04 13:17:55] [Window: ‪Untracked files in Git - Google Chrome‬]
-
-
-[Active Window: 'app.py - keylogger - Visual Studio Code']
-
-
-[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
-_Rd\~ 0h 0h 3hg 3hg 3hg 3hg 3h 0ie 0i  [2025-09-04 13:19:19] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-0i 2jd 2jd 2jan t 6o t 4hg 2h 3h  [2025-09-04 13:19:22] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-
-
-[Active Window: 'app.py - keylogger - Visual Studio Code']
-
-
-[Active Window: '‪Untracked files in Git - Google Chrome‬']
-0ied v}`u v}``  [2025-09-04 13:20:08] [Window: ‪Untracked files in Git - Google Chrome‬]
-
-
-[Active Window: 'app.py - keylogger - Visual Studio Code']
-
-
-[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
-jfjC=c jfjC=c jfjC= jfjC= v}`w 3jzg]~ 3 3hgg] 3h 3hg  [2025-09-04 13:21:10] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-3hg 3j 3h 0i 0i 0i 2jd 2j 3hg 3hg  [2025-09-04 13:21:12] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-
-
-[Active Window: 'app.py - keylogger - Visual Studio Code']
-3hg 3hg 3hg 3h 0ie 0i 2jd jfjC= jfjC= v}`l  [2025-09-04 13:21:49] [Window: app.py - keylogger - Visual Studio Code]
-
-
-[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
-v}`M v}`w 2jdf_}2j 3hg 2j 3hg 3h 2i 2j 0  [2025-09-04 13:22:05] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-
-
-[Active Window: 'app.py - keylogger - Visual Studio Code']
-0h 0h 0i 2i 2jgf 0h 0h 0h 0h 2  [2025-09-04 13:23:02] [Window: app.py - keylogger - Visual Studio Code]
-1o  [2025-09-04 13:23:05] [Window: app.py - keylogger - Visual Studio Code]
-v}`9  [2025-09-04 13:23:21] [Window: app.py - keylogger - Visual Studio Code]
-(  [2025-09-04 13:23:22] [Window: app.py - keylogger - Visual Studio Code]
-jfjC=a 7q!kR  [2025-09-04 13:25:39] [Window: app.py - keylogger - Visual Studio Code]
-
-
-[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
-v}`w 2igd 0 2j 2jd 2 0h 0h 0h 0h  [2025-09-04 13:25:57] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-
-
-[Active Window: 'app.py - keylogger - Visual Studio Code']
-
-
-[Active Window: '‪Untracked files in Git - Google Chrome‬']
-0h 2j v}`u v}``  [2025-09-04 13:27:01] [Window: ‪Untracked files in Git - Google Chrome‬]
-
-
-[Active Window: 'app.py - keylogger - Visual Studio Code']
-
-
-[Active Window: '‪Untracked files in Git - Google Chrome‬']
-v}`u v}``  [2025-09-04 13:27:20] [Window: ‪Untracked files in Git - Google Chrome‬]
-jfjC==(  [2025-09-04 13:27:34] [Window: ‪Untracked files in Git - Google Chrome‬]
-
-
-[Active Window: 'app.py - keylogger - Visual Studio Code']
-
-
-[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
-jfjC=+( jfjC=a v}`w 4jih]q<dgk[}+h 4ie` 3hcg 2n 2 4ie 4h  [2025-09-04 13:28:11] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-
-
-[Active Window: 'analyze_files.py - keylogger - Visual Studio Code']
-
-
-[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
-4 jfjC=: v}`9 v}`w 2jdfDr0ddf 3hgg] 0ied 3hg 3hg 3hg  [2025-09-04 13:29:27] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-
-
-[Active Window: 'Encryption.py - keylogger - Visual Studio Code']
-
-
-[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
-3h v}`u v}`` v}`w 5tbzZx: 5lm 5lm 5lm 5l :oa  [2025-09-04 13:30:49] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-5lm 5lm 5lm 5lm 5lm 6` 5lm 5lm 5l :oa  [2025-09-04 13:30:54] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-
-
-[Active Window: 'Encryption.py - keylogger - Visual Studio Code']
-
-
-[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
-:oan 5lm v}`w 0eikY 6jy 6ey ?d 2e ?aab ?a  [2025-09-04 13:32:27] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-
-
-[Active Window: 'app.py - keylogger - Visual Studio Code']
-.h 5jmhCw  [2025-09-04 13:32:59] [Window: app.py - keylogger - Visual Studio Code]
-
-
-[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
-v}`w 3hm\| 3h 3h 3h 0 3h 0 2 0  [2025-09-04 13:33:16] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-
-
-[Active Window: 'app.py - keylogger - Visual Studio Code']
-v}`r v}`r v}`u  [2025-09-04 13:33:38] [Window: app.py - keylogger - Visual Studio Code]
-
-
-[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
-v}`` v}`u v}`` v}`w 3jmf_q 2 2jhf 0ee 0ee 0e  [2025-09-04 13:33:58] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-2e 2j ?hg ?h 0ee 0e 2jh 2jh 2jh 2jh  [2025-09-04 13:34:00] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-v}`w 0 0 0 0 0 0 0 0 0  [2025-09-04 13:34:15] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-0 v}`w jfjC=0 jfjC=c jfjC=c m2?<  [2025-09-04 13:38:06] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-
-
-[Active Window: 'מסך הנעילה המשמש כברירת מחדל ב- Windows']
-
-
-[Active Window: '‪(51) WhatsApp - Google Chrome‬']
-jfjC==(  [2025-09-04 14:02:26] [Window: ‪(51) WhatsApp - Google Chrome‬]
-jfjC=@( jfjC=C( jfjC=A( jfjC=G( jfjC=I( jfjC=G( jfjC=L( jfjC=F( jfjC=jfjC==(  [2025-09-04 14:11:09] [Window: ‪(51) WhatsApp - Google Chrome‬]
-
-
-[Active Window: 'keylogger.py - keylogger - Visual Studio Code']
-?k{ 9fk v  [2025-09-04 14:12:49] [Window: keylogger.py - keylogger - Visual Studio Code]
-?k{ ;mba^b u 5 jfjC=c jfjC= 0chmN jfjC=  [2025-09-04 14:13:17] [Window: keylogger.py - keylogger - Visual Studio Code]
-?k{ +vnxBe  [2025-09-04 14:13:28] [Window: keylogger.py - keylogger - Visual Studio Code]
-[System Info] Computer Name: DESKTOP-9GJDES2
-
-
-[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
-C2pmakM9f0Mo G3Z9YBwxBHo/PRA= MGVrZlA= P2pn P2po P2o= P2o= Mmo= P2hn P2hn  [2025-09-07 15:24:06] [Window: ‫כרטיסייה חדשה - Google Chrome‬]
-
-
-[Active Window: 'keylogger.py - keylogger - Visual Studio Code']
-MGU= Mmpo MGg= MGU= P2o= Mmpo P2o= P2g= Mg==  [2025-09-07 15:24:35] [Window: keylogger.py - keylogger - Visual Studio Code]
-[System Info] Computer Name: DESKTOP-9GJDES2
-
-
-[Active Window: '‫כרטיסייה חדשה - Google Chrome‬']
-
-
-[Active Window: 'keylogger.py - keylogger - Visual Studio Code']
-[System Info] Computer Name: DESKTOP-9GJDES2
-
-
-[Active Window: 'keylogger.py - keylogger - Visual Studio Code']
-[System Info] Computer Name: DESKTOP-9GJDES2
-
-
-[Active Window: 'keylogger.py - keylogger - Visual Studio Code']
-
-
-[Active Window: '']
-[System Info] computer Name: DESKTOP-9GJDES2
-
-
-[Active Window: 'try_keylogger.py - keylogger - Visual Studio Code']
-C2pmakM9OQ==  [2025-09-08 22:09:48] [Window: try_keylogger.py - keylogger - Visual Studio Code]
-[System Info] Computer Name: DESKTOP-9GJDES2
-
-
-[Active Window: 'keylogger.py - keylogger - Visual Studio Code']
-
-
-[Active Window: 'הגדרות מהירות']
-
-
-[Active Window: 'keylogger.py - keylogger - Visual Studio Code']
-j5XYl+CP G3Z9YBzBzg== G3Z9YBzBzg== G3Z9YBzBzg==  [2025-09-08 22:41:28] [Window: keylogger.py - keylogger - Visual Studio Code]
-
-
-[Active Window: 'WhatsApp']
-j5TYmuCC j6DYmeCHj5E= j6rYqw== j5PYreCDj5A= j5LYm+CF j6vYkA== j6DYneC+j5vYpg== j57YnA== j5vYmeCFj6A= j5TYmA==  [2025-09-08 22:42:00] [Window: WhatsApp]
-
-
-[Active Window: 'keylogger.py - keylogger - Visual Studio Code']
-j57YnA== j6DYmeCHj5E=  [2025-09-08 22:42:41] [Window: keylogger.py - keylogger - Visual Studio Code]
-[System Info] Computer Name: DESKTOP-9GJDES2
-
-
-[Active Window: 'keylogger.py - keylogger - Visual Studio Code']
-=======
->>>>>>> 299f16b957ff771f497213484ee3b08d71637429
