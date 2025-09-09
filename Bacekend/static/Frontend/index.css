@@ -187,21 +187,21 @@
   padding: 0;
   height: 100%;
   font-family: 'Share Tech Mono', monospace;
-  background: url(Bku8ob8nw_0_13_640_361_0_x-large.avif) no-repeat center center fixed;
+  background: url(istockphoto-1492394438-612x612.jpg) no-repeat center center fixed;
   background-size: cover;
   color: white;
 }
-  /* שומר שהתמונה תישאר קבועה בגלילה */
+  
 
 
-/* מסך התחברות */
+
 #login-screen.container {
   background: rgba(255, 255, 255, 0.3);
   backdrop-filter: blur(12px);
   border-radius: 16px;
   padding: 30px;
   width: 340px;
-  margin: 5vh auto;
+  margin: 20vh auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -220,13 +220,13 @@
 #login-screen .logo i {
   width: 32px;
   height: 32px;
-  color: #00ffcc;
+  color: #ffffff;
 }
 
 #login-screen h1 {
   font-size: 1.6rem;
   font-weight: 700;
-  color: #00ffcc;
+  color: #ffffff;
   margin: 0;
 }
 
@@ -281,7 +281,7 @@
   box-shadow: 0 0 12px rgba(0,255,204,0.6);
 }
 
-/* דשבורד */
+
 #dashboard {
   padding: 20px;
   margin-top: 20px;
@@ -354,7 +354,7 @@
   color: #00ffcc;
 }
 
-/* אנימציות */
+
 @keyframes fadeIn {
   from { opacity: 0; transform: scale(0.95); }
   to { opacity: 1; transform: scale(1); }
