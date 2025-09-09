@@ -240,3 +240,38 @@ MGU= Mmpo MGg= MGU= P2o= Mmpo P2o= P2g= Mg==  [2025-09-07 15:24:35] [Window: key
 
 
 [Active Window: 'keylogger.py - keylogger - Visual Studio Code']
+[System Info] Computer Name: DESKTOP-9GJDES2
+
+
+[Active Window: 'keylogger.py - keylogger - Visual Studio Code']
+
+
+[Active Window: '']
+[System Info] computer Name: DESKTOP-9GJDES2
+
+
+[Active Window: 'try_keylogger.py - keylogger - Visual Studio Code']
+C2pmakM9OQ==  [2025-09-08 22:09:48] [Window: try_keylogger.py - keylogger - Visual Studio Code]
+[System Info] Computer Name: DESKTOP-9GJDES2
+
+
+[Active Window: 'keylogger.py - keylogger - Visual Studio Code']
+
+
+[Active Window: 'הגדרות מהירות']
+
+
+[Active Window: 'keylogger.py - keylogger - Visual Studio Code']
+j5XYl+CP G3Z9YBzBzg== G3Z9YBzBzg== G3Z9YBzBzg==  [2025-09-08 22:41:28] [Window: keylogger.py - keylogger - Visual Studio Code]
+
+
+[Active Window: 'WhatsApp']
+j5TYmuCC j6DYmeCHj5E= j6rYqw== j5PYreCDj5A= j5LYm+CF j6vYkA== j6DYneC+j5vYpg== j57YnA== j5vYmeCFj6A= j5TYmA==  [2025-09-08 22:42:00] [Window: WhatsApp]
+
+
+[Active Window: 'keylogger.py - keylogger - Visual Studio Code']
+j57YnA== j6DYmeCHj5E=  [2025-09-08 22:42:41] [Window: keylogger.py - keylogger - Visual Studio Code]
+[System Info] Computer Name: DESKTOP-9GJDES2
+
+
+[Active Window: 'keylogger.py - keylogger - Visual Studio Code']

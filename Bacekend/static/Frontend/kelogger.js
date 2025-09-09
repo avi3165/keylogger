@@ -236,7 +236,7 @@ function renderChart(activityData) {
         window.activityChartInstance.destroy();
     }
 
-    // יצירת הגרף
+
     window.activityChartInstance = new Chart(ctx, {
         type: 'line',
         data: {
