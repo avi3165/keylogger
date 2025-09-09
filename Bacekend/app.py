@@ -15,7 +15,7 @@ DATETIME_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 @app.route('/')
 def index():
-    return redirect('/static/Frontend/keylogger.html')
+    return redirect('/static/Frontend/index.html')
 
 
 @app.route('/api/computers', methods=['GET'])
